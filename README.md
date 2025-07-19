@@ -108,6 +108,13 @@ Please refer to the [FAQ](./docs/en/latest/FAQ.md) for more known issues.
 
 [Apache License 2.0](./LICENSE)
 
-## 3.0.2 开发备注
+## 开发备注
 1、最高仅支持node16版本，node 18版本不兼容webpack4,目前使用mise管理项目级别的node版本
 2、菜单定义在helpers.tsx文件中
+3、开发原则：最小化改动，优选manager api，次选admin api操作apisix
+## 版本日志
+### 3.0.2 
+1、ssl证书管理模块兼容3.13apisix
+
+## 代码阅读心得
+1、编译阶段注入版本号和git hash信息，避免硬编码

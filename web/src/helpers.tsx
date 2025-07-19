@@ -29,11 +29,11 @@ import { codeMessage } from './constants';
 
 export const getMenuData = (): MenuDataItem[] => {
   return [
-    {
-      name: 'dashboard',
-      path: '/dashboard',
-      icon: <IconFont name="icondashboard" />,
-    },
+    // {
+    //   name: 'dashboard',
+    //   path: '/dashboard',
+    //   icon: <IconFont name="icondashboard" />,
+    // },
     {
       name: 'routes',
       path: '/routes/list',
