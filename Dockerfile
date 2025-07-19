@@ -18,22 +18,22 @@
 ## 直接使用本地代码，无需 pre-build 阶段
 
 ## 后端构建
-FROM golang:1.19 as api-builder
+FROM golang:1.19 AS api-builder
 
-ARG ENABLE_PROXY=false
+ARG ENABLE_PROXY=true
 
 WORKDIR /usr/local/apisix-dashboard
 
 COPY . .
 
-RUN if [ "$ENABLE_PROXY" = "true" ] ; then go env -w GOPROXY=https://goproxy.io,direct ; fi \
+RUN if [ "$ENABLE_PROXY" = "true" ] ; then go env -w GOPROXY=https://mirrors.aliyun.com/goproxy/,direct ; fi \
     && go env -w GO111MODULE=on \
     && CGO_ENABLED=0 ./api/build.sh
 
 ## 前端构建
-FROM node:16-alpine as fe-builder
+FROM node:16-alpine AS fe-builder
 
-ARG ENABLE_PROXY=false
+ARG ENABLE_PROXY=true
 
 WORKDIR /usr/local/apisix-dashboard
 
@@ -42,13 +42,15 @@ COPY . .
 WORKDIR /usr/local/apisix-dashboard/web
 
 RUN if [ "$ENABLE_PROXY" = "true" ] ; then yarn config set registry https://registry.npmmirror.com/ ; fi \
+    && export NODE_TLS_REJECT_UNAUTHORIZED=0 \
+    && yarn config set "strict-ssl" false -g \
     && yarn install \
     && yarn build
 
 ## 生产环境
-FROM alpine:latest as prod
+FROM alpine:latest AS prod
 
-ARG ENABLE_PROXY=false
+ARG ENABLE_PROXY=true
 
 RUN if [ "$ENABLE_PROXY" = "true" ] ; then sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories ; fi
 
