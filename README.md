@@ -109,9 +109,13 @@ Please refer to the [FAQ](./docs/en/latest/FAQ.md) for more known issues.
 [Apache License 2.0](./LICENSE)
 
 ## 开发备注
+
 1、最高仅支持node16版本，node 18版本不兼容webpack4,目前使用mise管理项目级别的node版本
 2、菜单定义在helpers.tsx文件中
 3、开发原则：最小化改动，优选manager api，次选admin api操作apisix
+4、AMD64环境打包：`docker build -t hylink/apisix-dashboard-arm64:3.0.2 .`
+5、ARM64环境打包：`docker buildx build --platform linux/amd64 -t hylink/apisix-dashboard:3.0.2 --push .`
+
 ## 版本日志
 ### 3.0.2 
 1、ssl证书管理模块兼容3.13apisix
