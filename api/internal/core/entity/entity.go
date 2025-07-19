@@ -222,18 +222,18 @@ type SSLClient struct {
 // swagger:model SSL
 type SSL struct {
 	BaseInfo
-	Cert          string            `json:"cert,omitempty"`
-	Key           string            `json:"key,omitempty"`
-	Sni           string            `json:"sni,omitempty"`
-	Snis          []string          `json:"snis,omitempty"`
-	Certs         []string          `json:"certs,omitempty"`
-	Keys          []string          `json:"keys,omitempty"`
-	ExpTime       int64             `json:"exptime,omitempty"`
-	Status        int               `json:"status"`
-	ValidityStart int64             `json:"validity_start,omitempty"`
-	ValidityEnd   int64             `json:"validity_end,omitempty"`
-	Labels        map[string]string `json:"labels,omitempty"`
-	Client        *SSLClient        `json:"client,omitempty"`
+	Cert    string   `json:"cert,omitempty"`
+	Key     string   `json:"key,omitempty"`
+	Sni     string   `json:"sni,omitempty"`
+	Snis    []string `json:"snis,omitempty"`
+	Certs   []string `json:"certs,omitempty"`
+	Keys    []string `json:"keys,omitempty"`
+	ExpTime int64    `json:"exptime,omitempty"`
+	Status  int      `json:"status"`
+	// ValidityStart int64             `json:"validity_start,omitempty"`
+	// ValidityEnd   int64             `json:"validity_end,omitempty"`
+	Labels map[string]string `json:"labels,omitempty"`
+	Client *SSLClient        `json:"client,omitempty"`
 }
 
 // swagger:model Service
