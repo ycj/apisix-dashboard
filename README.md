@@ -122,3 +122,4 @@ Please refer to the [FAQ](./docs/en/latest/FAQ.md) for more known issues.
 
 ## 代码阅读心得
 1、编译阶段注入版本号和git hash信息，避免硬编码
+2、docker buildx 跨平台编译打包镜像
